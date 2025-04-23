@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  python-grpc:
+    build:
+      context: ./python-service
+    container_name: python-grpc
+    ports:
+      - "50051:50051"
+    networks:
+      - app-network
+
+  go-api:
+    build:
+      context: ./go-service
+    container_name: go-api
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    depends_on:
+      - python-grpc
+
+networks:
+  app-network:
+    driver: bridge

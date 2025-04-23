@@ -1,0 +1,11 @@
+FROM golang:latest
+
+WORKDIR /app
+
+COPY . .
+
+RUN go mod init go-app && go mod tidy
+
+RUN go build -o main .
+
+CMD ["./main"]
