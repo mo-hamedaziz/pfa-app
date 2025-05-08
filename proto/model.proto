@@ -4,16 +4,17 @@ package model;
 
 option go_package = "/modelpb";
 
-
 service GoService {
   rpc SendTrainingData (TrainingRequest) returns (TrainingResponse);
 }
 
 message TrainingRequest {
-  repeated string feature_names = 1;
-  repeated float values = 2;
+  string tenant_id = 1;
+  repeated string feature_names = 2;
+  repeated float values = 3;
 }
 
 message TrainingResponse {
   string status = 1;
 }
+

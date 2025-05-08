@@ -24,18 +24,18 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bmodel.proto\x12\x05model\"8\n\x0fTrainingRequest\x12\x15\n\rfeature_names\x18\x01 \x03(\t\x12\x0e\n\x06values\x18\x02 \x03(\x02\"\"\n\x10TrainingResponse\x12\x0e\n\x06status\x18\x01 \x01(\t2P\n\tGoService\x12\x43\n\x10SendTrainingData\x12\x16.model.TrainingRequest\x1a\x17.model.TrainingResponseB&Z$pfa_app/go-service/generated/modelpbb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bmodel.proto\x12\x05model\"K\n\x0fTrainingRequest\x12\x11\n\ttenant_id\x18\x01 \x01(\t\x12\x15\n\rfeature_names\x18\x02 \x03(\t\x12\x0e\n\x06values\x18\x03 \x03(\x02\"\"\n\x10TrainingResponse\x12\x0e\n\x06status\x18\x01 \x01(\t2P\n\tGoService\x12\x43\n\x10SendTrainingData\x12\x16.model.TrainingRequest\x1a\x17.model.TrainingResponseB\nZ\x08/modelpbb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'model_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z$pfa_app/go-service/generated/modelpb'
+  _globals['DESCRIPTOR']._serialized_options = b'Z\010/modelpb'
   _globals['_TRAININGREQUEST']._serialized_start=22
-  _globals['_TRAININGREQUEST']._serialized_end=78
-  _globals['_TRAININGRESPONSE']._serialized_start=80
-  _globals['_TRAININGRESPONSE']._serialized_end=114
-  _globals['_GOSERVICE']._serialized_start=116
-  _globals['_GOSERVICE']._serialized_end=196
+  _globals['_TRAININGREQUEST']._serialized_end=97
+  _globals['_TRAININGRESPONSE']._serialized_start=99
+  _globals['_TRAININGRESPONSE']._serialized_end=133
+  _globals['_GOSERVICE']._serialized_start=135
+  _globals['_GOSERVICE']._serialized_end=215
 # @@protoc_insertion_point(module_scope)

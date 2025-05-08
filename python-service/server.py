@@ -16,6 +16,9 @@ class ModelTrainer(model_pb2_grpc.GoServiceServicer):
         print("Trained model with data:", request.feature_names, request.values)
 
         #Save hetha fil bd,  
+        
+
+
         return model_pb2.TrainingResponse(status="Model trained")
 
 def serve():
