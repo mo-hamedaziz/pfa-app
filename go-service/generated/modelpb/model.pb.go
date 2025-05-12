@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v6.30.0--rc1
-// source: model.proto
+// source: proto/model.proto
 
 package modelpb
 
@@ -23,15 +23,16 @@ const (
 
 type TrainingRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureNames  []string               `protobuf:"bytes,1,rep,name=feature_names,json=featureNames,proto3" json:"feature_names,omitempty"`
-	Values        []float32              `protobuf:"fixed32,2,rep,packed,name=values,proto3" json:"values,omitempty"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	FeatureNames  []string               `protobuf:"bytes,2,rep,name=feature_names,json=featureNames,proto3" json:"feature_names,omitempty"`
+	Values        []float32              `protobuf:"fixed32,3,rep,packed,name=values,proto3" json:"values,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *TrainingRequest) Reset() {
 	*x = TrainingRequest{}
-	mi := &file_model_proto_msgTypes[0]
+	mi := &file_proto_model_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +44,7 @@ func (x *TrainingRequest) String() string {
 func (*TrainingRequest) ProtoMessage() {}
 
 func (x *TrainingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_model_proto_msgTypes[0]
+	mi := &file_proto_model_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +57,14 @@ func (x *TrainingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TrainingRequest.ProtoReflect.Descriptor instead.
 func (*TrainingRequest) Descriptor() ([]byte, []int) {
-	return file_model_proto_rawDescGZIP(), []int{0}
+	return file_proto_model_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *TrainingRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
 }
 
 func (x *TrainingRequest) GetFeatureNames() []string {
@@ -82,7 +90,7 @@ type TrainingResponse struct {
 
 func (x *TrainingResponse) Reset() {
 	*x = TrainingResponse{}
-	mi := &file_model_proto_msgTypes[1]
+	mi := &file_proto_model_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -94,7 +102,7 @@ func (x *TrainingResponse) String() string {
 func (*TrainingResponse) ProtoMessage() {}
 
 func (x *TrainingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_model_proto_msgTypes[1]
+	mi := &file_proto_model_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -107,7 +115,7 @@ func (x *TrainingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TrainingResponse.ProtoReflect.Descriptor instead.
 func (*TrainingResponse) Descriptor() ([]byte, []int) {
-	return file_model_proto_rawDescGZIP(), []int{1}
+	return file_proto_model_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *TrainingResponse) GetStatus() string {
@@ -117,14 +125,15 @@ func (x *TrainingResponse) GetStatus() string {
 	return ""
 }
 
-var File_model_proto protoreflect.FileDescriptor
+var File_proto_model_proto protoreflect.FileDescriptor
 
-const file_model_proto_rawDesc = "" +
+const file_proto_model_proto_rawDesc = "" +
 	"\n" +
-	"\vmodel.proto\x12\x05model\"N\n" +
-	"\x0fTrainingRequest\x12#\n" +
-	"\rfeature_names\x18\x01 \x03(\tR\ffeatureNames\x12\x16\n" +
-	"\x06values\x18\x02 \x03(\x02R\x06values\"*\n" +
+	"\x11proto/model.proto\x12\x05model\"k\n" +
+	"\x0fTrainingRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12#\n" +
+	"\rfeature_names\x18\x02 \x03(\tR\ffeatureNames\x12\x16\n" +
+	"\x06values\x18\x03 \x03(\x02R\x06values\"*\n" +
 	"\x10TrainingResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status2P\n" +
 	"\tGoService\x12C\n" +
@@ -132,23 +141,23 @@ const file_model_proto_rawDesc = "" +
 	"Z\b/modelpbb\x06proto3"
 
 var (
-	file_model_proto_rawDescOnce sync.Once
-	file_model_proto_rawDescData []byte
+	file_proto_model_proto_rawDescOnce sync.Once
+	file_proto_model_proto_rawDescData []byte
 )
 
-func file_model_proto_rawDescGZIP() []byte {
-	file_model_proto_rawDescOnce.Do(func() {
-		file_model_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_model_proto_rawDesc), len(file_model_proto_rawDesc)))
+func file_proto_model_proto_rawDescGZIP() []byte {
+	file_proto_model_proto_rawDescOnce.Do(func() {
+		file_proto_model_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_model_proto_rawDesc), len(file_proto_model_proto_rawDesc)))
 	})
-	return file_model_proto_rawDescData
+	return file_proto_model_proto_rawDescData
 }
 
-var file_model_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_model_proto_goTypes = []any{
+var file_proto_model_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_model_proto_goTypes = []any{
 	(*TrainingRequest)(nil),  // 0: model.TrainingRequest
 	(*TrainingResponse)(nil), // 1: model.TrainingResponse
 }
-var file_model_proto_depIdxs = []int32{
+var file_proto_model_proto_depIdxs = []int32{
 	0, // 0: model.GoService.SendTrainingData:input_type -> model.TrainingRequest
 	1, // 1: model.GoService.SendTrainingData:output_type -> model.TrainingResponse
 	1, // [1:2] is the sub-list for method output_type
@@ -158,26 +167,26 @@ var file_model_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_model_proto_init() }
-func file_model_proto_init() {
-	if File_model_proto != nil {
+func init() { file_proto_model_proto_init() }
+func file_proto_model_proto_init() {
+	if File_proto_model_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_model_proto_rawDesc), len(file_model_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_model_proto_rawDesc), len(file_proto_model_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_model_proto_goTypes,
-		DependencyIndexes: file_model_proto_depIdxs,
-		MessageInfos:      file_model_proto_msgTypes,
+		GoTypes:           file_proto_model_proto_goTypes,
+		DependencyIndexes: file_proto_model_proto_depIdxs,
+		MessageInfos:      file_proto_model_proto_msgTypes,
 	}.Build()
-	File_model_proto = out.File
-	file_model_proto_goTypes = nil
-	file_model_proto_depIdxs = nil
+	File_proto_model_proto = out.File
+	file_proto_model_proto_goTypes = nil
+	file_proto_model_proto_depIdxs = nil
 }

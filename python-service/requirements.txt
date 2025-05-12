@@ -2,3 +2,4 @@ grpcio
 grpcio-tools
 scikit-learn
 numpy
+psycopg2-binary

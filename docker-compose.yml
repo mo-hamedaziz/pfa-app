@@ -7,8 +7,11 @@ services:
     container_name: python-grpc
     ports:
       - "50051:50051"
-    networks:
-      - app-network
+    environment:
+      - DB_HOST=postgres
+      - DB_NAME=ml_tenants
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
 
   go-api:
     build:
@@ -16,11 +19,21 @@ services:
     container_name: go-api
     ports:
       - "8080:8080"
-    networks:
-      - app-network
     depends_on:
       - python-grpc
 
-networks:
-  app-network:
-    driver: bridge
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ml_tenants
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

@@ -9,9 +9,11 @@ import (
 
     "google.golang.org/grpc"
     pb "go-app/generated/modelpb"
+    "fmt"
 )
 
 type RequestPayload struct {
+    TenantID     string    `json:"tenant_id"` // <-- add this
     FeatureNames []string  `json:"feature_names"`
     Values       []float32 `json:"values"`
 }
@@ -48,9 +50,16 @@ func handleTrainingData(w http.ResponseWriter, r *http.Request) {
     }
 
     grpcReq := &pb.TrainingRequest{
+        TenantId:     reqData.TenantID, // <-- add this
         FeatureNames: reqData.FeatureNames,
         Values:       reqData.Values,
     }
+
+    fmt.Println(reqData.TenantID)
+    fmt.Println(reqData.FeatureNames)
+    fmt.Println(reqData.Values)
+
+    
 
     ctx, cancel := context.WithTimeout(context.Background(), time.Second*3)
     defer cancel()
